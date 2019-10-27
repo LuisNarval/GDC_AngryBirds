@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - PAJARO
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Piso
+  - Bases
+  - Cortina
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ambiente
+    uniqueID: 2979098271
+    locked: 0
+  - name: Utileria
+    uniqueID: 580427975
+    locked: 0
+  - name: Suelo
+    uniqueID: 2146172795
+    locked: 0
+  - name: Cerdos
+    uniqueID: 3112242013
+    locked: 0
+  - name: Birds
+    uniqueID: 522636017
+    locked: 0
+  - name: Enfrente
+    uniqueID: 732183277
+    locked: 0
