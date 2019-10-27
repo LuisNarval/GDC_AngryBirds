@@ -5,6 +5,9 @@ using UnityEngine;
 public class CameraController : MonoBehaviour{
 
     [Header("CONFIGURACIONES")]
+
+    public float SensibilidadX;
+
     public Vector3 posicionInicial;
     public float anchoFocalInicial;
     public Vector3 posicionMovimiento;
@@ -17,6 +20,10 @@ public class CameraController : MonoBehaviour{
     public float tiempoAPajaros;
     public float tiempoANormalidad;
 
+    [Header("Máximos")]
+    public float maxD;
+    public float maxI;
+
     [Header("REFERENCIAS")]
     public Camera camara;
     public Transform posCerdos;
@@ -25,6 +32,11 @@ public class CameraController : MonoBehaviour{
 
     [Header("CONSULTAS")]
     public float tiempo;
+    public bool Activo = false;
+    public bool EnDrag = false;
+
+    private float posX = 0;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -37,27 +49,7 @@ public class CameraController : MonoBehaviour{
 
     IEnumerator corrutina_TomaDeApertura(){
         yield return new WaitForSeconds(1.5f);
-
-        /*tiempo = 0;
-        while (tiempo < 1.0f){
-            camara.transform.position = new Vector3( Mathf.Lerp(posicionInicial.x, posCerdos.position.x, tiempo),
-                                                     posicionInicial.y, camara.transform.position.z);
-
-            tiempo += Time.deltaTime * 1.0f/tiempoACerdos;
-            yield return new WaitForEndOfFrame();
-        }
-
-        tiempo = 0;
-        while (tiempo < 1.0f){
-
-            camara.transform.position = new Vector3(posCerdos.position.x, 
-                                            Mathf.Lerp(posicionInicial.y, posCerdos.position.y, tiempo), camara.transform.position.z);
-
-            camara.orthographicSize = Mathf.Lerp(anchoFocalInicial, anchoFocalEnCerdos, tiempo);
-            tiempo += Time.deltaTime * 1.0f / tiempoACerdos;
-            yield return new WaitForEndOfFrame();
-        }*/
-
+        Debug.Log("A CERDOS!");
         tiempo = 0;
         while (tiempo < 1.5f) {
             camara.transform.position = new Vector3(Mathf.Lerp(posicionInicial.x, posCerdos.position.x, tiempo),
@@ -68,10 +60,7 @@ public class CameraController : MonoBehaviour{
             yield return new WaitForEndOfFrame();
         }
 
-
-
         yield return new WaitForSeconds(0.5f);
-
 
         Debug.Log("A PAJAROS!");
         tiempo = 0;
@@ -85,7 +74,6 @@ public class CameraController : MonoBehaviour{
         }
 
         yield return new WaitForSeconds(0.5f);
-
 
         Debug.Log("A TAMAÑO FINAL");
         tiempo = 0;
@@ -108,7 +96,45 @@ public class CameraController : MonoBehaviour{
         HUD.alpha = 1.0f;
         HUD.blocksRaycasts = true;
 
+        Activo = true;
+    }
 
+
+
+    public void InicioDrag(){
+        if (Activo)
+            EnDrag = true;
+    }
+
+    public void FinDrag(){
+        if (Activo && EnDrag){
+            EnDrag = false;
+            posX = 0;
+        }
+
+    }
+
+    public void Drag(){
+        if (EnDrag){
+            if(posX != 0){
+                float movX = Input.mousePosition.x - posX;
+                moverCamara(movX);
+            }
+            posX = Input.mousePosition.x;
+        }
+    }
+
+    void moverCamara(float cantidad){
+        if (cantidad > 0 &&  camara.transform.position.x > maxI)
+            camara.transform.Translate(Vector3.right * cantidad * SensibilidadX * Time.deltaTime);
+        else if(cantidad < 0 && camara.transform.position.x < maxD)
+            camara.transform.Translate(Vector3.right * cantidad * SensibilidadX * Time.deltaTime);
+
+        if (camara.transform.position.x > maxD)
+            camara.transform.position = new Vector3(maxD, camara.transform.position.y, camara.transform.position.z);
+
+        if (camara.transform.position.x < maxI)
+            camara.transform.position = new Vector3(maxI, camara.transform.position.y, camara.transform.position.z);
     }
 
 
