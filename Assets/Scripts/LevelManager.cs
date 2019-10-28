@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour {
 
     public Score code_Score;
     public Resortera code_Resortera;
+    public CameraController code_Camara;
     public GameObject ColisionesResortera;
 
     public Animator anim_Resultados;
@@ -24,6 +25,9 @@ public class LevelManager : MonoBehaviour {
     public Animator anim_Derrota;
 
     public GameObject PopUp_Aves;
+
+    public AudioSource SFX_RisaPajaros;
+    public AudioSource SFX_RisaCerdos;
 
     [Header("CONSULTA")]
     public int puntosConseguidos = 0;
@@ -49,6 +53,8 @@ public class LevelManager : MonoBehaviour {
 
     
     IEnumerator conteoFinalDePuntos() {
+
+        code_Camara.Victoria();
 
         bool movimiento = true;
 
@@ -122,13 +128,16 @@ public class LevelManager : MonoBehaviour {
 
 
     IEnumerator corrutina_Estrellas(){
+
+        
+
         yield return new WaitForSeconds(1.0f);
         anim_Estrellas.Play("Estrellas_Aparecer");
         yield return new WaitForSeconds((1.0f/60.0f)*45.0f);
         anim_Estrellas.Play("Estrellas_Tres");
 
         aves[0].gameObject.SetActive(false);
-
+        SFX_RisaPajaros.Play();
         if (puntosConseguidos >= AvesTresEstrellas){   
             yield return new WaitForSeconds(1.5f);
             anim_Estrellas.speed = 0.0f;
@@ -156,7 +165,14 @@ public class LevelManager : MonoBehaviour {
             cerdos[i].enabled = false;
 
         anim_Derrota.Play("Derrota_Entrada");
+
+        Invoke("RisaCerdo", 2.0f);
         Debug.Log("GAME OVER !!");
+    }
+
+
+    private void RisaCerdo(){
+        SFX_RisaCerdos.Play();
     }
 
 }

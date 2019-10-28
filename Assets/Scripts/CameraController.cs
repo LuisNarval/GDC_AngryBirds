@@ -29,6 +29,10 @@ public class CameraController : MonoBehaviour{
     public Transform posCerdos;
     public Transform posPajaros;
     public CanvasGroup HUD;
+    public GameObject ColisionesResortera;
+
+    public AudioSource SFX_MultitudCerdos;
+    public AudioSource SFX_MultitudPajaros;
 
     [Header("CONSULTAS")]
     public float tiempo;
@@ -42,6 +46,7 @@ public class CameraController : MonoBehaviour{
     void Start() {
         HUD.alpha = 0.0f;
         HUD.blocksRaycasts = false;
+        ColisionesResortera.SetActive(false);
         camara.transform.position = posicionInicial;
         camara.orthographicSize = anchoFocalInicial;
         StartCoroutine(corrutina_TomaDeApertura());
@@ -50,6 +55,7 @@ public class CameraController : MonoBehaviour{
     IEnumerator corrutina_TomaDeApertura(){
         yield return new WaitForSeconds(1.5f);
         Debug.Log("A CERDOS!");
+        SFX_MultitudCerdos.Play();
         tiempo = 0;
         while (tiempo < 1.5f) {
             camara.transform.position = new Vector3(Mathf.Lerp(posicionInicial.x, posCerdos.position.x, tiempo),
@@ -59,10 +65,11 @@ public class CameraController : MonoBehaviour{
             camara.orthographicSize = Mathf.Lerp(anchoFocalInicial, anchoFocalEnCerdos, tiempo/1.0f);
             yield return new WaitForEndOfFrame();
         }
-
+        
         yield return new WaitForSeconds(0.5f);
 
         Debug.Log("A PAJAROS!");
+        SFX_MultitudPajaros.Play();
         tiempo = 0;
         while (tiempo < 1.5f){
             camara.transform.position = new Vector3(Mathf.Lerp(posCerdos.position.x, posPajaros.position.x, tiempo),
@@ -73,6 +80,7 @@ public class CameraController : MonoBehaviour{
             yield return new WaitForEndOfFrame();
         }
 
+        
         yield return new WaitForSeconds(0.5f);
 
         Debug.Log("A TAMAÑO FINAL");
@@ -96,6 +104,7 @@ public class CameraController : MonoBehaviour{
         HUD.alpha = 1.0f;
         HUD.blocksRaycasts = true;
 
+        ColisionesResortera.SetActive(true);
         Activo = true;
     }
 
@@ -137,5 +146,25 @@ public class CameraController : MonoBehaviour{
             camara.transform.position = new Vector3(maxI, camara.transform.position.y, camara.transform.position.z);
     }
 
+    public void Victoria(){
+        Activo = false;
+        EnDrag = false;
+        ColisionesResortera.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(corrutina_Victoria());
+    }
+
+    IEnumerator corrutina_Victoria(){
+        Vector3 posActual = camara.transform.position;
+        tiempo = 0;
+        while (tiempo < 1.0f){
+            camara.transform.position = new Vector3(Mathf.Lerp(posActual.x, posicionInicial.x, tiempo),
+                                                    Mathf.Lerp(posActual.y, posicionInicial.y, tiempo), camara.transform.position.z);
+
+            tiempo += Time.deltaTime * 1.0f;
+            camara.orthographicSize = Mathf.Lerp(anchoFocalMovimiento,anchoFocalInicial, tiempo);
+            yield return new WaitForEndOfFrame();
+        }
+    }
 
 }

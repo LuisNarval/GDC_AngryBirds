@@ -9,6 +9,7 @@ public class Cerdo : MonoBehaviour{
 
     [Header("REFERENCIAS")]
     public GameObject PopUp;
+    public AudioClip[] clips;
 
     [Header("CONSULTA")]
     public int ESTADO = 1;
@@ -16,6 +17,7 @@ public class Cerdo : MonoBehaviour{
     private LevelManager code_levelManager;
     private Score code_Score;
     private Animator anim_Cerdo;
+    
 
     
 
@@ -32,6 +34,7 @@ public class Cerdo : MonoBehaviour{
             anim_Cerdo.Play("Explosion");
             PopUp.transform.position = this.transform.position;
             PopUp.GetComponent<Animator>().Play("Oculto");
+            Puff();
             PopUp.GetComponent<Animator>().Play("Muestra");
             code_Score.aumentarScore(5000);
             Invoke("DeclararDerrota", 1.0f);
@@ -44,6 +47,14 @@ public class Cerdo : MonoBehaviour{
         this.transform.position = Vector3.one * 10000;
         this.gameObject.SetActive(false);
         code_levelManager.cerdoDestruido();
+    }
+
+
+    void Puff(){
+        int aleatorio = (int)Random.Range(0.0f, 2.0f);
+        this.gameObject.GetComponent<AudioSource>().clip = clips[aleatorio];
+        this.gameObject.GetComponent<AudioSource>().Play();
+
     }
 
 }

@@ -28,6 +28,7 @@ public class Resortera : MonoBehaviour {
     public LevelManager code_LevelManager;
     public GuiaDeTiro code_GuiaDeTiro;
     public Rastro code_Rastro;
+    public SFXPajaros code_SFXPajaros;
     public Rigidbody2D[] utileria;
 
     [Header("Consultas")]
@@ -53,11 +54,22 @@ public class Resortera : MonoBehaviour {
         actualizarResortes();
     }
 
+    private bool Estiron = false;
     public void actualizarTira(Vector3 nPos){
         Vector3 direccion = nPos - posCentral.position;
         
         if (direccion.magnitude == 0)
             direccion = posReposo - posCentral.position;
+
+        if (ResorteraActiva){
+            if (!Estiron && direccion.magnitude > 0.3f){
+                this.GetComponent<AudioSource>().Play();
+                Estiron = true;
+            }else if(Estiron && direccion.magnitude < 0.3f)
+                Estiron = false;
+        } 
+
+        Debug.Log(direccion.magnitude);
 
         direccion = Vector3.Normalize(direccion);
 
@@ -152,7 +164,7 @@ public class Resortera : MonoBehaviour {
             Pajaros[PActual].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
             Pajaros[PActual].gameObject.GetComponent<Ave>().lanzado = true;
 
-           
+            code_SFXPajaros.GritoPajaro();
 
             StartCoroutine(corrutina_RestaurarResortera());
         }
@@ -224,5 +236,6 @@ public class Resortera : MonoBehaviour {
         StopAllCoroutines();
     }
 
+    
     
 }
