@@ -13,35 +13,35 @@ public class Title_LevelBreaker : MonoBehaviour{
     }
 
     public void AbrirNiveles(){
-        if (PlayerPrefs.HasKey("NIVEL_UNO_DISPONIBLE"))
+        if (PlayerPrefs.HasKey("NivelUno"))
             CANDADOS[0].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_DOS_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelDos"))
+            CANDADOS[1].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_TRES_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelTres"))
+            CANDADOS[2].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_CUATRO_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelCuatro"))
+            CANDADOS[3].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_CINCO_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelCinco"))
+            CANDADOS[4].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_SEIS_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelSeis"))
+            CANDADOS[5].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_SIETE_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelSiete"))
+            CANDADOS[6].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_OCHO_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelOcho"))
+            CANDADOS[7].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_NUEVE_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelNueve"))
+            CANDADOS[8].SetActive(false);
 
-        if (PlayerPrefs.HasKey("NIVEL_DIEZ_DISPONIBLE"))
-            CANDADOS[0].SetActive(false);
+        if (PlayerPrefs.HasKey("NivelDiez"))
+            CANDADOS[9].SetActive(false);
     }
 
 }

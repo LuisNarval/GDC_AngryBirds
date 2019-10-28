@@ -13,7 +13,7 @@ public class TitleManager : MonoBehaviour{
     public Image cortina;
 
     public void Awake(){
-        PlayerPrefs.SetString("NIVEL_UNO_DISPONIBLE", "OK");
+        PlayerPrefs.SetString("NivelUno", "OK");
     }
 
     public void Play(string next){

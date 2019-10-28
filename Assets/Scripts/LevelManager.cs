@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour {
     [Header("Scripts")]
     public Score code_Score;
     public BGMController code_BGM;
+    public LevelBreaker code_LevelBreaker;
     public Resortera code_Resortera;
     public CameraController code_Camara;
     public GameObject ColisionesResortera;
@@ -73,6 +74,7 @@ public class LevelManager : MonoBehaviour {
     IEnumerator conteoFinalDePuntos() {
 
         code_Camara.Victoria();
+        code_LevelBreaker.AbrirSiguienteNivel();
 
         bool movimiento = true;
 

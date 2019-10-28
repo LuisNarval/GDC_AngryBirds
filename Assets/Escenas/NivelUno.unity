@@ -551,7 +551,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457789812}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &30437871
 MonoBehaviour:
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfad11aad4e4274f91cfdb6eb29c643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NombreNivel: SCORE_UNO
+  SCORE_NAME: SCORE_UNO
   txt_Score: {fileID: 1391827659}
   txt_HighScore: {fileID: 1361268625}
   txt_InfoResultados: {fileID: 1049872549}
@@ -2908,7 +2908,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457789812}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &294096380
 MonoBehaviour:
@@ -3804,6 +3804,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1783476059}
+  - {fileID: 645600765}
   - {fileID: 1192385726}
   - {fileID: 30437870}
   - {fileID: 1908695579}
@@ -5328,6 +5329,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &645600764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645600765}
+  - component: {fileID: 645600766}
+  m_Layer: 0
+  m_Name: LevelBreaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645600765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645600764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 457789812}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &645600766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645600764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcfb4921b3657394cb87b2f9b994f3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SIGUIENTE_NIVEL: NivelDos
+  BtnSiguiente1: {fileID: 95722863}
+  BtnSiguiente2: {fileID: 1326612541}
 --- !u!1 &645613714
 GameObject:
   m_ObjectHideFlags: 0
@@ -9643,7 +9690,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457789812}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1192385727
 MonoBehaviour:
@@ -14290,6 +14337,7 @@ MonoBehaviour:
   - {fileID: 160824471}
   code_Score: {fileID: 30437871}
   code_BGM: {fileID: 0}
+  code_LevelBreaker: {fileID: 645600766}
   code_Resortera: {fileID: 2112805999}
   code_Camara: {fileID: 1908695580}
   ColisionesResortera: {fileID: 1427873123}
@@ -15049,7 +15097,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457789812}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1908695580
 MonoBehaviour:
@@ -16256,6 +16304,7 @@ MonoBehaviour:
   - {fileID: 160824471}
   - {fileID: 1729389679}
   - {fileID: 460210229}
+  cerdos: []
   TiroEnProceso: 0
   ResorteraActiva: 0
   PunteroDentro: 0

@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Score : MonoBehaviour{
+public class Score : MonoBehaviour
+{
 
     [Header("CONFIGURACIONES")]
-    public string NombreNivel;
+    public string SCORE_NAME;
 
     [Header("REFERENCIAS")]
     public Text txt_Score;
@@ -21,10 +22,14 @@ public class Score : MonoBehaviour{
     public bool Recibiendo = false;
 
     // Start is called before the first frame update
-    void Start(){
-        if (PlayerPrefs.HasKey(NombreNivel)){
-            highScore = PlayerPrefs.GetInt(NombreNivel);
-        }else{
+    void Start()
+    {
+        if (PlayerPrefs.HasKey(SCORE_NAME))
+        {
+            highScore = PlayerPrefs.GetInt(SCORE_NAME);
+        }
+        else
+        {
             highScore = 0;
         }
 
@@ -34,17 +39,20 @@ public class Score : MonoBehaviour{
         Invoke("comenzar", 1.0f);
     }
 
-    void comenzar(){
+    void comenzar()
+    {
         Recibiendo = true;
     }
 
-    public void guardarHighScore(){
+    public void guardarHighScore()
+    {
 
         int scoreFinal = (int)score;
         Debug.Log("Score Final : " + scoreFinal);
 
-        if (scoreFinal > highScore){
-            PlayerPrefs.SetInt(NombreNivel, scoreFinal);
+        if (scoreFinal > highScore)
+        {
+            PlayerPrefs.SetInt(SCORE_NAME, scoreFinal);
             txt_InfoResultados.text = "¡ Nueva Puntuación Máxima !";
         }
         else
@@ -55,19 +63,22 @@ public class Score : MonoBehaviour{
 
 
 
-    public void aumentarScore(float cantidad){
-        if (Recibiendo){
+    public void aumentarScore(float cantidad)
+    {
+        if (Recibiendo)
+        {
             score += cantidad;
             actualizarScores();
         }
     }
 
-    void actualizarScores(){
+    void actualizarScores()
+    {
         int scoreRedondeado = (int)score;
         txt_Score.text = scoreRedondeado.ToString();
     }
 
 
-    
+
 
 }
