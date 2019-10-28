@@ -28,6 +28,13 @@ public class LevelManager : MonoBehaviour {
 
     public AudioSource SFX_RisaPajaros;
     public AudioSource SFX_RisaCerdos;
+    public AudioSource SFX_Mil;
+    public AudioClip[] ClipMil;
+    public AudioSource SFX_Estrellas;
+    public AudioClip[] ClipEstrellas;
+    public AudioSource SFX_Fanfarrea;
+    public AudioClip[] ClipFanfarrea;
+
 
     [Header("CONSULTA")]
     public int puntosConseguidos = 0;
@@ -90,6 +97,7 @@ public class LevelManager : MonoBehaviour {
                 PopUp_Aves.GetComponent<Animator>().Play("Muestra");
                 yield return new WaitForSeconds(0.25f);
                 code_Score.aumentarScore(10000);
+                SFXPopUp();
                 yield return new WaitForSeconds(1.25f);
                 puntosConseguidos++;
                 Debug.Log("PuntosSumados");
@@ -118,8 +126,11 @@ public class LevelManager : MonoBehaviour {
 
         code_Score.guardarHighScore();
         anim_Resultados.Play("Resultados_Victoria");
+        SFXFanfarreas(1);
 
         yield return new WaitForSeconds(1.0f);
+
+        
 
         StartCoroutine(corrutina_Estrellas());
     }
@@ -138,18 +149,22 @@ public class LevelManager : MonoBehaviour {
 
         aves[0].gameObject.SetActive(false);
         SFX_RisaPajaros.Play();
-        if (puntosConseguidos >= AvesTresEstrellas){   
+        
+        if (puntosConseguidos >= AvesTresEstrellas){
+            SFXEstrellas(3);
             yield return new WaitForSeconds(1.5f);
             anim_Estrellas.speed = 0.0f;
             Debug.Log("3 ESTRELLAS");
         }   
         else if (puntosConseguidos >= AvesDosEstrellas){
+            SFXEstrellas(2);
             yield return new WaitForSeconds(1.0f);
             anim_Estrellas.speed = 0.0f;
             Debug.Log("2 ESTRELLAS");
         }
         else{
             yield return new WaitForSeconds(0.5f);
+            SFXEstrellas(1);
             anim_Estrellas.speed = 0.0f;
             Debug.Log("1 ESTRELLA");
         }
@@ -166,7 +181,9 @@ public class LevelManager : MonoBehaviour {
 
         anim_Derrota.Play("Derrota_Entrada");
 
+        SFXFanfarreas(0);
         Invoke("RisaCerdo", 2.0f);
+
         Debug.Log("GAME OVER !!");
     }
 
@@ -175,4 +192,28 @@ public class LevelManager : MonoBehaviour {
         SFX_RisaCerdos.Play();
     }
 
+    private void SFXPopUp(){
+        int aleatorio = (int)Random.Range(0.0f, 3.0f);
+        SFX_Mil.clip = ClipMil[aleatorio];
+        SFX_Mil.Play();
+    }
+
+    private void SFXEstrellas(int i){
+        StartCoroutine(corrutina_SFXEstrellas(i));
+    }
+
+    IEnumerator corrutina_SFXEstrellas(int E){
+
+        for(int i = 0; i < E; i++){
+            SFX_Estrellas.clip = ClipEstrellas[i];
+            SFX_Estrellas.Play();
+            yield return new WaitForSeconds(0.5f);
+        }
+
+    }
+
+    private void SFXFanfarreas(int i){
+        SFX_Fanfarrea.clip = ClipFanfarrea[i];
+        SFX_Fanfarrea.Play();
+    }
 }
