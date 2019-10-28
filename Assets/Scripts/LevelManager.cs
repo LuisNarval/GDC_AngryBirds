@@ -134,7 +134,7 @@ public class LevelManager : MonoBehaviour {
 
 
         Debug.Log("SE HA GANADO EL JUEGO, SE TERMINO EL CONTEO");
-
+        code_Score.Recibiendo = false;
         code_Score.guardarHighScore();
         anim_Resultados.Play("Resultados_Victoria");
         code_BGM.bajarVolumen();

@@ -20,4 +20,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Escenas/NivelDos.unity
     guid: 0a1fe65715168d54c83e05da7c94df44
+  - enabled: 1
+    path: Assets/Escenas/NivelTres.unity
+    guid: 00ea1aea617de43438d0d1a4a13d0496
+  - enabled: 1
+    path: Assets/Escenas/NivelCuatro.unity
+    guid: 07ad89fa1ad17bb48bfab3ba15487233
+  - enabled: 1
+    path: Assets/Escenas/NivelCinco.unity
+    guid: 792c484418f82b24a96c4376c94ffe7a
+  - enabled: 1
+    path: Assets/Escenas/NivelSeis.unity
+    guid: 4e38fd3b63165b9488aae1608958d8a2
+  - enabled: 1
+    path: Assets/Escenas/NivelSiete.unity
+    guid: eb9a4fdb403c17e4ea6b628516367d41
+  - enabled: 1
+    path: Assets/Escenas/NivelOcho.unity
+    guid: b530106de38fc0247bd1927dbac32b52
+  - enabled: 1
+    path: Assets/Escenas/NivelNueve.unity
+    guid: b81728715e2fbf84cbb0e6380fa1dffd
+  - enabled: 1
+    path: Assets/Escenas/NivelDiez.unity
+    guid: ba133fbeba003144ead7361197e04040
   m_configObjects: {}

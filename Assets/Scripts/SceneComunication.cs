@@ -37,6 +37,10 @@ public class SceneComunication : MonoBehaviour{
         StartCoroutine(corrutina_CargarEscena(EscenaSiguiente));
     }
 
+    public void IrACreditos(){
+        code_BGM.FinalizarBGM();
+        StartCoroutine(corrutina_CargarEscena(EscenaSiguiente));
+    }
 
     IEnumerator corrutina_CargarEscena(string escena){
         anim_Cortinas.Play("Cerrar");
