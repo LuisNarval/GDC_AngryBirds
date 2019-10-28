@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour {
     public Rigidbody[] utileria;
 
     public Score code_Score;
+    public BGMController code_BGM;
     public Resortera code_Resortera;
     public CameraController code_Camara;
     public GameObject ColisionesResortera;
@@ -38,7 +39,10 @@ public class LevelManager : MonoBehaviour {
 
     [Header("CONSULTA")]
     public int puntosConseguidos = 0;
-    
+
+    private void Start(){
+        code_BGM = GameObject.Find("BGM").GetComponent<BGMController>();
+    }
 
     public void cerdoDestruido() {
         bool cerdosEliminados = true;
@@ -126,6 +130,7 @@ public class LevelManager : MonoBehaviour {
 
         code_Score.guardarHighScore();
         anim_Resultados.Play("Resultados_Victoria");
+        code_BGM.bajarVolumen();
         SFXFanfarreas(1);
 
         yield return new WaitForSeconds(1.0f);
@@ -181,6 +186,7 @@ public class LevelManager : MonoBehaviour {
 
         anim_Derrota.Play("Derrota_Entrada");
 
+        code_BGM.bajarVolumen();
         SFXFanfarreas(0);
         Invoke("RisaCerdo", 2.0f);
 

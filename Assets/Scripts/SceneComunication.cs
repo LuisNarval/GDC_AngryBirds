@@ -12,24 +12,28 @@ public class SceneComunication : MonoBehaviour{
 
     [Header("CONSULTA")]
     public string EscenaActual;
+    public BGMController code_BGM;
    
 
     // Start is called before the first frame update
     void Start(){
         EscenaActual = SceneManager.GetActiveScene().name;
-       
+        code_BGM = GameObject.Find("BGM").GetComponent<BGMController>();
     }
 
 
     public void SeleecionarNivel(){
+        code_BGM.FinalizarBGM();
         StartCoroutine(corrutina_CargarEscena("Seleccion"));
     }
 
     public void Reiniciar(){
+        code_BGM.subirVolumen();
         StartCoroutine(corrutina_CargarEscena(EscenaActual));
     }
 
     public void Siguiente(){
+        code_BGM.subirVolumen();
         StartCoroutine(corrutina_CargarEscena(EscenaSiguiente));
     }
 
