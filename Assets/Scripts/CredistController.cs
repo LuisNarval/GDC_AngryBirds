@@ -6,17 +6,22 @@ using UnityEngine.SceneManagement;
 public class CredistController : MonoBehaviour{
 
     [Header("REFERENCIAS")]
+    public Animator anim_Creditos;
     AudioSource BGM;
 
     void Start(){
         BGM = this.GetComponent<AudioSource>();
         BGM.volume = 0.0f;
-        BGM.Play();
-        StartCoroutine(corrutina_Reloj());
+        
         StartCoroutine(corrutina_Creditos());
     }
 
     IEnumerator corrutina_Creditos(){
+
+        yield return new WaitForSeconds(1.0f);
+
+        anim_Creditos.Play("Muestra");
+        BGM.Play();
 
         float tiempo = 0;
         while (tiempo < 1.0f){
