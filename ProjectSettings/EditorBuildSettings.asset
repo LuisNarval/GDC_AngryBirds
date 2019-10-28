@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Escenas/NivelDiez.unity
     guid: ba133fbeba003144ead7361197e04040
+  - enabled: 1
+    path: Assets/Escenas/Creditos.unity
+    guid: da6076fed151b7f4cb795b6ffa27a275
   m_configObjects: {}

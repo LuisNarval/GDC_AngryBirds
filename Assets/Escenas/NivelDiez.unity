@@ -8252,7 +8252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79648d8304341cb4ba4ca6032ee34da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EscenaSiguiente: Titulo
+  EscenaSiguiente: Creditos
   anim_Cortinas: {fileID: 54667340}
   EscenaActual: 
   code_BGM: {fileID: 0}
