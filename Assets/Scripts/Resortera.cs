@@ -30,6 +30,7 @@ public class Resortera : MonoBehaviour {
     public Rastro code_Rastro;
     public SFXPajaros code_SFXPajaros;
     public Rigidbody2D[] utileria;
+    public Rigidbody2D[] cerdos;
 
     [Header("Consultas")]
     public bool TiroEnProceso = false;
@@ -68,8 +69,6 @@ public class Resortera : MonoBehaviour {
             }else if(Estiron && direccion.magnitude < 0.3f)
                 Estiron = false;
         } 
-
-        Debug.Log(direccion.magnitude);
 
         direccion = Vector3.Normalize(direccion);
 
@@ -222,14 +221,26 @@ public class Resortera : MonoBehaviour {
         do {
             movimiento = false;
             for (int i = 0; i < utileria.Length; i++){
-                if (utileria[i].velocity.magnitude > 0.02f){
+                if (utileria[i].velocity.magnitude > 0.05f){
                     movimiento = true;
                 }
             }
 
-            Debug.Log("Resortera Esperando");
             yield return new WaitForSeconds(0.5f);
         } while (movimiento) ;
+
+
+        do{
+            movimiento = false;
+            for (int i = 0; i < cerdos.Length; i++){
+                if (cerdos[i].velocity.magnitude > 0.05f){
+                    movimiento = true;
+                }
+            }
+            yield return new WaitForSeconds(0.5f);
+        } while (movimiento);
+
+        yield return new WaitForSeconds(0.5f);
 
         code_LevelManager.GameOver();
 

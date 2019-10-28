@@ -47,7 +47,6 @@ public class BGMController : MonoBehaviour{
 
     IEnumerator corrutina_EsperarFinal(){
         while (BGM.isPlaying){
-            Debug.Log(BGM.time);
             yield return new WaitForSeconds(2.0f);
         }
         Debug.Log("La canción ha terminado");

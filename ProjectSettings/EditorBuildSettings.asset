@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Escenas/Seleccion.unity
     guid: 7a99266f8d7690e4aa31b2b1ad6c84a4
   - enabled: 1
-    path: Assets/Escenas/Main.unity
-    guid: 96567a7a8ec40a5469ddee86cb252636
+    path: Assets/Escenas/NivelUno.unity
+    guid: f4ac3a20304ab1346acbb8767e5077fb
   - enabled: 1
-    path: Assets/Escenas/Resortes.unity
-    guid: 0a4b68245e0569745b092379cd8186b4
+    path: Assets/Escenas/NivelDos.unity
+    guid: 0a1fe65715168d54c83e05da7c94df44
   m_configObjects: {}

@@ -5,28 +5,32 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour {
 
     [Header("Número de Aves para conseguir 3 estrellas")]
-    [Header("CONFIGURACIONES")]
+    [Header("----- CONFIGURACIONES -----")]
     public int AvesTresEstrellas;
     [Header("Número de Aves para conseguir 2 estrellas")]
     public int AvesDosEstrellas;
 
-    [Header("REFERENCIAS")]
+    
+    [Header("ACTORES ACTUALES")]
+    [Header("----- REFERENCIAS -----")]
     public Cerdo[] cerdos;
     public Ave[] aves;
-    public Rigidbody[] utileria;
+    public Rigidbody2D[] utileria;
 
+    [Header("Scripts")]
     public Score code_Score;
     public BGMController code_BGM;
     public Resortera code_Resortera;
     public CameraController code_Camara;
     public GameObject ColisionesResortera;
 
+    [Header("Animaciones")]
     public Animator anim_Resultados;
     public Animator anim_Estrellas;
     public Animator anim_Derrota;
-
     public GameObject PopUp_Aves;
 
+    [Header("Audio")]
     public AudioSource SFX_RisaPajaros;
     public AudioSource SFX_RisaCerdos;
     public AudioSource SFX_Mil;
@@ -36,8 +40,9 @@ public class LevelManager : MonoBehaviour {
     public AudioSource SFX_Fanfarrea;
     public AudioClip[] ClipFanfarrea;
 
+    private bool Victoria = false;
 
-    [Header("CONSULTA")]
+    [Header("----- CONSULTA -----")]
     public int puntosConseguidos = 0;
 
     private void Start(){
@@ -57,6 +62,8 @@ public class LevelManager : MonoBehaviour {
     }
 
     void TodosLosCerdosFueronEliminados() {
+        Victoria = true;
+        code_Resortera.StopAllCoroutines();
         code_Resortera.enabled = false;
         ColisionesResortera.SetActive(false);
         StartCoroutine(conteoFinalDePuntos());
@@ -71,13 +78,13 @@ public class LevelManager : MonoBehaviour {
 
         do{
             movimiento = false;
-            for (int i = 0; i < utileria.Length; i++){
+            for (int i = 0; i < aves.Length; i++){
                 if (aves[i].gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0.02f) {
                     movimiento = true;
                 }
             }
             Debug.Log("Esperando Aves");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         } while (movimiento);
 
         do{
@@ -88,7 +95,7 @@ public class LevelManager : MonoBehaviour {
                 }
             }
             Debug.Log("Esperando Utileria");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         } while (movimiento);
 
 
@@ -119,14 +126,12 @@ public class LevelManager : MonoBehaviour {
                 }
             }
             Debug.Log("Esperando Utileria");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         } while (movimiento);
 
 
 
         Debug.Log("SE HA GANADO EL JUEGO, SE TERMINO EL CONTEO");
-
-        yield return new WaitForSeconds(1.0f);
 
         code_Score.guardarHighScore();
         anim_Resultados.Play("Resultados_Victoria");
@@ -184,13 +189,15 @@ public class LevelManager : MonoBehaviour {
         for(int i = 0; i < cerdos.Length; i++)
             cerdos[i].enabled = false;
 
-        anim_Derrota.Play("Derrota_Entrada");
+        if (!Victoria){
+            anim_Derrota.Play("Derrota_Entrada");
 
-        code_BGM.bajarVolumen();
-        SFXFanfarreas(0);
-        Invoke("RisaCerdo", 2.0f);
+            code_BGM.bajarVolumen();
+            SFXFanfarreas(0);
+            Invoke("RisaCerdo", 2.0f);
 
-        Debug.Log("GAME OVER !!");
+            Debug.Log("GAME OVER !!");
+        }
     }
 
 

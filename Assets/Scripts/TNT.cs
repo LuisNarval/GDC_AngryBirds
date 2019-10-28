@@ -27,7 +27,7 @@ public class TNT : MonoBehaviour{
             colision.enabled = false;
             sprite.enabled = false;
             Explosion.SetActive(true);
-            Invoke("Migrar", 3.0f);
+            Invoke("Migrar", 1.5f);
         }
     }
 
