@@ -218,18 +218,6 @@ public class Resortera : MonoBehaviour {
     IEnumerator corrutina_VerificarEscenario(){
         bool movimiento = true;
 
-        do {
-            movimiento = false;
-            for (int i = 0; i < utileria.Length; i++){
-                if (utileria[i].velocity.magnitude > 0.05f){
-                    movimiento = true;
-                }
-            }
-
-            yield return new WaitForSeconds(0.5f);
-        } while (movimiento) ;
-
-
         do{
             movimiento = false;
             for (int i = 0; i < cerdos.Length; i++){
@@ -240,7 +228,25 @@ public class Resortera : MonoBehaviour {
             yield return new WaitForSeconds(0.5f);
         } while (movimiento);
 
+        do{
+            movimiento = false;
+            for (int i = 0; i < utileria.Length; i++){
+                if (utileria[i].velocity.magnitude > 0.05f){
+                    utileria[i].velocity = Vector3.zero;
+                    movimiento = true;
+                }
+            }
+
+            yield return new WaitForSeconds(0.5f);
+        } while (movimiento);
+
         yield return new WaitForSeconds(0.5f);
+
+        for (int i = 0; i < cerdos.Length; i++){
+            cerdos[i].velocity = Vector3.zero;
+        }
+
+        
 
         code_LevelManager.GameOver();
 

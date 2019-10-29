@@ -93,6 +93,7 @@ public class LevelManager : MonoBehaviour {
             movimiento = false;
             for (int i = 0; i < utileria.Length; i++){
                 if (utileria[i].velocity.magnitude > 0.1f){
+                    utileria[i].velocity = Vector3.zero;
                     movimiento = true;
                 }
             }
@@ -124,6 +125,7 @@ public class LevelManager : MonoBehaviour {
             movimiento = false;
             for (int i = 0; i < utileria.Length; i++){
                 if (utileria[i].velocity.magnitude > 0.02f) {
+                    utileria[i].velocity = Vector3.zero;
                     movimiento = true;
                 }
             }
