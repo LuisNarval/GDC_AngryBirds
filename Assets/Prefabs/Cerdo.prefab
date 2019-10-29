@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7213112567143231028}
   - component: {fileID: 1485153629811573359}
   - component: {fileID: 2013598243}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cerdo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

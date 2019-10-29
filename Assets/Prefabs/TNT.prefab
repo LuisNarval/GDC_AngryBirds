@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4604904183929890564}
   - component: {fileID: 460210230}
   - component: {fileID: 460210228}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 4604904184209773478}
   - component: {fileID: 4604904184209773479}
   - component: {fileID: 9062871854554156140}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1044829849154019737}
   - component: {fileID: 8730462636477252747}
   - component: {fileID: 3902193249155602514}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HuecoHielo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

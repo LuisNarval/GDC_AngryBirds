@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1044829849154019737}
   - component: {fileID: 2282804901244129160}
   - component: {fileID: 8524685799660127871}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HuecoConcreto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

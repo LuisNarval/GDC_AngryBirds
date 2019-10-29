@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4371638603839473723}
   - component: {fileID: 1898753529963466958}
   - component: {fileID: 9162218136594131976}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CirculoHielo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

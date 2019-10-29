@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4663903634865386862}
   - component: {fileID: 1528502674295461604}
   - component: {fileID: 7871093957496096304}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TrianguloHielo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

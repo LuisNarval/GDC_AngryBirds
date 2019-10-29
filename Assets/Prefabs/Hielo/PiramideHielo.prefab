@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8789412627702744503}
   - component: {fileID: 186382218559291361}
   - component: {fileID: 8746238757958628871}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PiramideHielo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

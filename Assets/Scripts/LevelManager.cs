@@ -81,7 +81,7 @@ public class LevelManager : MonoBehaviour {
         do{
             movimiento = false;
             for (int i = 0; i < aves.Length; i++){
-                if (aves[i].gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0.02f) {
+                if (aves[i].gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0.1f) {
                     movimiento = true;
                 }
             }
@@ -92,7 +92,7 @@ public class LevelManager : MonoBehaviour {
         do{
             movimiento = false;
             for (int i = 0; i < utileria.Length; i++){
-                if (utileria[i].velocity.magnitude > 0.02f){
+                if (utileria[i].velocity.magnitude > 0.1f){
                     movimiento = true;
                 }
             }

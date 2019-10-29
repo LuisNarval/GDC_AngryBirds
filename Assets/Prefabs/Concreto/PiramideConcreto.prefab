@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8789412627702744503}
   - component: {fileID: 2588637514644263}
   - component: {fileID: 5297889144059213196}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PiramideConcreto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

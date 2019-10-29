@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3211193660710015746}
   - component: {fileID: 7231792642716683076}
   - component: {fileID: 3783773774020932869}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LineaConcreto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

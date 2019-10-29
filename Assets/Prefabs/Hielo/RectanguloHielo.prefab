@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4761140104523200458}
   - component: {fileID: 6282894352877904920}
   - component: {fileID: 5665184823681037035}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RectanguloHielo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4350951927370239244}
   - component: {fileID: 5003788915973603344}
   - component: {fileID: 3890816907468638499}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CuadroHielo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
