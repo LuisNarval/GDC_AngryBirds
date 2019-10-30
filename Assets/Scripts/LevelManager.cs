@@ -89,18 +89,17 @@ public class LevelManager : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         } while (movimiento);
 
-        do{
+        /*do{
             movimiento = false;
             for (int i = 0; i < utileria.Length; i++){
-                if (utileria[i].velocity.magnitude > 0.1f){
-                    utileria[i].velocity = Vector3.zero;
+                if (utileria[i].velocity.magnitude > 1.0f){
                     movimiento = true;
                 }
             }
             Debug.Log("Esperando Utileria");
             yield return new WaitForSeconds(0.1f);
         } while (movimiento);
-
+        */
 
 
         for (int i = 0; i < aves.Length; i++){
@@ -121,17 +120,16 @@ public class LevelManager : MonoBehaviour {
         PopUp_Aves.transform.position = Vector3.one*-100;
         PopUp_Aves.GetComponent<Animator>().Play("Oculto");
 
-        do{
+        /*do{
             movimiento = false;
             for (int i = 0; i < utileria.Length; i++){
-                if (utileria[i].velocity.magnitude > 0.02f) {
-                    utileria[i].velocity = Vector3.zero;
+                if (utileria[i].velocity.magnitude > 1.0f) {
                     movimiento = true;
                 }
             }
             Debug.Log("Esperando Utileria");
             yield return new WaitForSeconds(0.1f);
-        } while (movimiento);
+        } while (movimiento);*/
 
 
 

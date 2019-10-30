@@ -38,11 +38,12 @@ public class Resortera : MonoBehaviour {
     public bool PunteroDentro = false;
     public bool ZonaProhibida = false;
 
-    
+    private CameraController code_CameraController;
 
     // Start is called before the first frame update
     void Start() {
         transTira.position = posCentral.position;
+        code_CameraController = GameObject.Find("CameraController").GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -154,7 +155,7 @@ public class Resortera : MonoBehaviour {
 
         if (!ZonaProhibida){
             TiroEnProceso = true;
-
+            code_CameraController.DisparoRealizado(Pajaros[PActual]);
             Vector3 direccion = posCentral.position - Pajaros[PActual].position;
             direccion = Vector3.Normalize(direccion);
             Pajaros[PActual].gameObject.GetComponent<Rigidbody2D>().AddForce(direccion*FuerzaDisparo* Pajaros[PActual].GetComponent<Rigidbody2D>().mass,ForceMode2D.Impulse);
@@ -210,6 +211,7 @@ public class Resortera : MonoBehaviour {
         if (PActual + 1 < Pajaros.Length){
             PActual++;
             TiroEnProceso = false;
+            code_CameraController.EnDisparo = false;
         }else{
             StartCoroutine(corrutina_VerificarEscenario());
         }
@@ -228,22 +230,21 @@ public class Resortera : MonoBehaviour {
             yield return new WaitForSeconds(0.5f);
         } while (movimiento);
 
-        do{
+        /*do{
             movimiento = false;
             for (int i = 0; i < utileria.Length; i++){
-                if (utileria[i].velocity.magnitude > 0.05f){
-                    utileria[i].velocity = Vector3.zero;
+                if (utileria[i].velocity.magnitude > 0.5f){
                     movimiento = true;
                 }
             }
 
             yield return new WaitForSeconds(0.5f);
-        } while (movimiento);
+        } while (movimiento);*/
 
         yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i < cerdos.Length; i++){
-            cerdos[i].velocity = Vector3.zero;
+            cerdos[i].simulated = false;
         }
 
         

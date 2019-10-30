@@ -38,9 +38,10 @@ public class CameraController : MonoBehaviour{
     public float tiempo;
     public bool Activo = false;
     public bool EnDrag = false;
+    public bool EnDisparo = false;
 
     private float posX = 0;
-
+    private Transform aveActual;
 
     // Start is called before the first frame update
     void Start() {
@@ -50,6 +51,12 @@ public class CameraController : MonoBehaviour{
         camara.transform.position = posicionInicial;
         camara.orthographicSize = anchoFocalInicial;
         StartCoroutine(corrutina_TomaDeApertura());
+    }
+
+    private void LateUpdate(){
+        if (EnDisparo){
+            SeguirAve();
+        }
     }
 
     IEnumerator corrutina_TomaDeApertura(){
@@ -111,8 +118,11 @@ public class CameraController : MonoBehaviour{
 
 
     public void InicioDrag(){
-        if (Activo)
+        if (Activo){
             EnDrag = true;
+            EnDisparo = false;
+        }
+
     }
 
     public void FinDrag(){
@@ -164,6 +174,19 @@ public class CameraController : MonoBehaviour{
             tiempo += Time.deltaTime * 1.0f;
             camara.orthographicSize = Mathf.Lerp(anchoFocalMovimiento,anchoFocalInicial, tiempo);
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    public void DisparoRealizado(Transform ave){
+        aveActual = ave;
+        EnDisparo = true;
+    }
+
+    void SeguirAve(){
+        if (aveActual.position.x > this.transform.position.x){
+            this.transform.position = new Vector3(aveActual.position.x, this.transform.position.y, this.transform.position.z);
+            if (camara.transform.position.x > maxD)
+                camara.transform.position = new Vector3(maxD, camara.transform.position.y, camara.transform.position.z);
         }
     }
 
