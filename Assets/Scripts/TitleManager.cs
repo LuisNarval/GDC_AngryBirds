@@ -13,7 +13,7 @@ public class TitleManager : MonoBehaviour{
     public Image cortina;
 
     public void Awake(){
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         PlayerPrefs.SetString("NivelUno", "OK");
     }
 
