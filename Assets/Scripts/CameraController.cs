@@ -39,9 +39,10 @@ public class CameraController : MonoBehaviour{
     public bool Activo = false;
     public bool EnDrag = false;
     public bool EnDisparo = false;
+    public bool CamaraAutomatica = false;
 
     private float posX = 0;
-    private Transform aveActual;
+    public Transform aveActual;
 
     // Start is called before the first frame update
     void Start() {
@@ -120,7 +121,7 @@ public class CameraController : MonoBehaviour{
     public void InicioDrag(){
         if (Activo){
             EnDrag = true;
-            EnDisparo = false;
+            CamaraAutomatica = false;
         }
 
     }
@@ -159,6 +160,7 @@ public class CameraController : MonoBehaviour{
     public void Victoria(){
         Activo = false;
         EnDrag = false;
+        EnDisparo = false;
         ColisionesResortera.SetActive(false);
         StopAllCoroutines();
         StartCoroutine(corrutina_Victoria());
@@ -179,15 +181,41 @@ public class CameraController : MonoBehaviour{
 
     public void DisparoRealizado(Transform ave){
         aveActual = ave;
+        CamaraAutomatica = true;
         EnDisparo = true;
     }
 
     void SeguirAve(){
-        if (aveActual.position.x > this.transform.position.x){
-            this.transform.position = new Vector3(aveActual.position.x, this.transform.position.y, this.transform.position.z);
+        Debug.Log("SIGUIENDO AVE");
+        Debug.Log("POS A: " + aveActual.position.x + "POS C : " + camara.transform.position.x);
+
+        if (aveActual.position.x > camara.transform.position.x && CamaraAutomatica){
+            camara.transform.position = new Vector3(aveActual.position.x, camara.transform.position.y, camara.transform.position.z);
             if (camara.transform.position.x > maxD)
                 camara.transform.position = new Vector3(maxD, camara.transform.position.y, camara.transform.position.z);
         }
+    }
+
+    IEnumerator corrutina_RegresarABase(){
+
+        float tiempo = 0;
+        float posI = camara.transform.position.x;
+
+        if (CamaraAutomatica) {
+            while (tiempo < 1){
+                Debug.Log("REGRESANDO");
+                tiempo += Time.deltaTime;
+                camara.transform.position = new Vector3(Mathf.Lerp(posI, maxI, tiempo), camara.transform.position.y, camara.transform.position.z);
+
+                if (EnDrag)
+                    break;
+
+                yield return new WaitForEndOfFrame();
+            }
+        }
+       
+        EnDisparo = false;
+        CamaraAutomatica = false;
     }
 
 }

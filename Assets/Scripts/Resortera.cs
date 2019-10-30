@@ -38,7 +38,7 @@ public class Resortera : MonoBehaviour {
     public bool PunteroDentro = false;
     public bool ZonaProhibida = false;
 
-    private CameraController code_CameraController;
+    public CameraController code_CameraController;
 
     // Start is called before the first frame update
     void Start() {
@@ -212,6 +212,7 @@ public class Resortera : MonoBehaviour {
             PActual++;
             TiroEnProceso = false;
             code_CameraController.EnDisparo = false;
+            code_CameraController.StartCoroutine("corrutina_RegresarABase");
         }else{
             StartCoroutine(corrutina_VerificarEscenario());
         }

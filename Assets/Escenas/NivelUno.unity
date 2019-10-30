@@ -15134,6 +15134,9 @@ MonoBehaviour:
   tiempo: 0
   Activo: 0
   EnDrag: 0
+  EnDisparo: 0
+  CamaraAutomatica: 0
+  aveActual: {fileID: 0}
 --- !u!224 &1911101670 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4506871344060130367, guid: dadb36ead33cfed43827a831ec000248,
@@ -16316,6 +16319,7 @@ MonoBehaviour:
   ResorteraActiva: 0
   PunteroDentro: 0
   ZonaProhibida: 0
+  code_CameraController: {fileID: 0}
 --- !u!82 &2112806000
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16958,12 +16962,12 @@ PrefabInstance:
     - target: {fileID: 1839612744869145644, guid: c77f56ba3f2f50b4d86e4fc97271a50b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.667
+      value: 3.717
       objectReference: {fileID: 0}
     - target: {fileID: 1839612744869145644, guid: c77f56ba3f2f50b4d86e4fc97271a50b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.161
+      value: 2.989
       objectReference: {fileID: 0}
     - target: {fileID: 1839612744869145644, guid: c77f56ba3f2f50b4d86e4fc97271a50b,
         type: 3}
@@ -17031,12 +17035,12 @@ PrefabInstance:
     - target: {fileID: 3140949914503921361, guid: 351574bede86803429bae185b15db6e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.817
+      value: 2.861
       objectReference: {fileID: 0}
     - target: {fileID: 3140949914503921361, guid: 351574bede86803429bae185b15db6e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.286
+      value: 3.158
       objectReference: {fileID: 0}
     - target: {fileID: 3140949914503921361, guid: 351574bede86803429bae185b15db6e7,
         type: 3}
@@ -17104,12 +17108,12 @@ PrefabInstance:
     - target: {fileID: 3537800902487682158, guid: 4106da8450e226d418a071b19b4fdfdd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.813
+      value: 1.913
       objectReference: {fileID: 0}
     - target: {fileID: 3537800902487682158, guid: 4106da8450e226d418a071b19b4fdfdd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.356
+      value: 3.139
       objectReference: {fileID: 0}
     - target: {fileID: 3537800902487682158, guid: 4106da8450e226d418a071b19b4fdfdd,
         type: 3}
