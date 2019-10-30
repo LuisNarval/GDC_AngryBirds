@@ -9230,7 +9230,7 @@ PrefabInstance:
     - target: {fileID: 2711713395909745870, guid: e4b889d9dd7387f48b0c36f42934b86c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: Siguiente
+      value: IrACreditos
       objectReference: {fileID: 0}
     - target: {fileID: 2711713395909745865, guid: e4b889d9dd7387f48b0c36f42934b86c,
         type: 3}
